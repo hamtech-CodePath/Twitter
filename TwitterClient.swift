@@ -25,6 +25,21 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
+    func homeTimelineWithCompletion(params: NSDictionary?, completion: (tweets: [Tweet]?, error:NSError?) -> ()) {
+        //getTweets
+        GET("1.1/statuses/home_timeline.json", parameters: params,
+            success: { (operation:NSURLSessionDataTask, response:AnyObject?) -> Void in
+                //helper for serialization
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                //send data thru completion block
+                completion(tweets:tweets, error:nil)
+            }, failure: { (operation:NSURLSessionDataTask?, error:NSError) -> Void in
+                print("Couldn't get tweets")
+                completion(tweets: nil, error: error)
+                
+        })
+    }
+    
     func loginWithCompletion(completion: (user:User?, error:NSError?) -> ()){
         loginCompletion = completion
         //Fetch RequestToken and redirect to authorization page
@@ -61,20 +76,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                         self.loginCompletion?(user:nil, error:error)
                 })
             
-                //getTweets
-                TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil,
-                    success: { (operation:NSURLSessionDataTask, response:AnyObject?) -> Void in
-                        //testing serialization
-                        //                    var tweet = Tweet.tweetsWithArray(response as! [NSDictionary])
-                        //                    for twit in tweet {
-                        //                        print("text: \(twit.text)")
-                        //                        print(twit.createdAt)
-                        //                    }
-                    
-                    }, failure: { (operation:NSURLSessionDataTask?, error:NSError) -> Void in
-                        print(error)
-                        print("Couldn't get tweets")
-            })
+            
             
         // Error with AccessToken
         }) { (error: NSError!) -> Void in

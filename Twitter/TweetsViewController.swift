@@ -10,6 +10,17 @@ import UIKit
 
 class TweetsViewController: UIViewController {
     
+    var tweets: [Tweet]?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        TwitterClient.sharedInstance.homeTimelineWithCompletion(
+            nil, completion: { (tweets, error) -> () in
+            self.tweets = tweets
+        })
+    }
+    
     @IBAction func onLogout(sender: AnyObject) {
             User.currentUser?.logout()
     }
