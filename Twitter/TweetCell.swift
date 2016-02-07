@@ -15,6 +15,13 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var userScreenNameLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var TweetLabel: UILabel!
+    @IBOutlet weak var favoriteCountLabel: UILabel!
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var retweetImageView: UIImageView!
+    
+    var didFavorite: Bool?
+    var didRetweet: Bool?
     
     var tweet: Tweet! {
         didSet{
@@ -24,6 +31,8 @@ class TweetCell: UITableViewCell {
             userScreenNameLabel.text = "@\(screenname)"
             TweetLabel.text = tweet.text
             createdAtLabel.text = tweet.createdAtString
+            favoriteCountLabel.text = String(tweet.favoriteCount!)
+            retweetCountLabel.text = String(tweet.retweetCount!)
             
         }
     }
@@ -38,8 +47,38 @@ class TweetCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
+    @IBAction func pressedRetweet(sender: AnyObject) {
+        print("retweet")
+        if didFavorite == true {
+            didFavorite = false
+            self.retweetImageView.image = UIImage(named:"retweet-action")
+            self.tweet.retweetCount!--
+            retweetCountLabel.text = String(tweet.retweetCount!)
+
+        } else {
+           didFavorite = true
+            self.retweetImageView.image = UIImage(named:"retweet-action-on-pressed")
+            self.tweet.retweetCount!++
+            retweetCountLabel.text = String(tweet.retweetCount!)
+        }
+    }
+
+    @IBAction func pressedFavorite(sender: AnyObject) {
+        print("favorite")
+        if didFavorite == true {
+            didFavorite = false
+            self.favoriteImageView.image = UIImage(named:"like-action")
+            self.tweet.favoriteCount!--
+            favoriteCountLabel.text = String(tweet.favoriteCount!)
+            
+        } else {
+            didFavorite = true
+            self.favoriteImageView.image = UIImage(named:"like-action-on-pressed")
+            self.tweet.favoriteCount!++
+            favoriteCountLabel.text = String(tweet.favoriteCount!)
+        }
+    }
 }

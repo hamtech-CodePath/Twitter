@@ -66,4 +66,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func onLogout(sender: AnyObject) {
             User.currentUser?.logout()
     }
+    @IBAction func onRetweetTap(sender: AnyObject) {
+        print("retweet")
+    }
+
 }

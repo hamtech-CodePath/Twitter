@@ -34,6 +34,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         GET("1.1/statuses/home_timeline.json", parameters: params,
             success: { (operation:NSURLSessionDataTask, response:AnyObject?) -> Void in
                 //helper for serialization
+                print(response)
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 //send data thru completion block
                 self.tweetsCompletion!(tweets:tweets, error:nil)
