@@ -16,6 +16,7 @@ let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 class TwitterClient: BDBOAuth1SessionManager {
     
     var loginCompletion: ((user:User?, error:NSError?) -> ())?
+    var tweetsCompletion: ((tweets: [Tweet]?, error:NSError?) -> ())?
     
     class var sharedInstance : TwitterClient {
         struct Static {
@@ -26,13 +27,16 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func homeTimelineWithCompletion(params: NSDictionary?, completion: (tweets: [Tweet]?, error:NSError?) -> ()) {
+        
+        tweetsCompletion = completion
+        
         //getTweets
         GET("1.1/statuses/home_timeline.json", parameters: params,
             success: { (operation:NSURLSessionDataTask, response:AnyObject?) -> Void in
                 //helper for serialization
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 //send data thru completion block
-                completion(tweets:tweets, error:nil)
+                self.tweetsCompletion!(tweets:tweets, error:nil)
             }, failure: { (operation:NSURLSessionDataTask?, error:NSError) -> Void in
                 print("Couldn't get tweets")
                 completion(tweets: nil, error: error)
@@ -48,6 +52,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             print("Got the request token")
             var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
             UIApplication.sharedApplication().openURL(authURL!)
+            
             }) { (error: NSError!) -> Void in
                 print("Error getting request token: \(error)")
                 self.loginCompletion?(user:nil, error:error)

@@ -51,19 +51,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghO-v8-UnU">
-                                <rect key="frame" x="244" y="259" width="48" height="30"/>
+                                <rect key="frame" x="292" y="77" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="onLogout:" destination="xls-l2-knb" eventType="touchUpInside" id="06i-qZ-ofg"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tvf-2M-BPU">
+                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TweetCell" rowHeight="103" id="88x-Fs-Z8N" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="103"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="88x-Fs-Z8N" id="YPM-KE-CsU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZe-cn-BjX">
+                                                    <rect key="frame" x="16" y="41" width="555" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="testLabel" destination="UZe-cn-BjX" id="U2F-qk-Fru"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ghO-v8-UnU" firstAttribute="top" secondItem="aS5-nA-cXA" secondAttribute="bottom" constant="239" id="NV0-wO-8jh"/>
-                            <constraint firstItem="ghO-v8-UnU" firstAttribute="leading" secondItem="ayS-Vj-Dg3" secondAttribute="leading" constant="244" id="fFM-fV-frJ"/>
+                            <constraint firstItem="Tvf-2M-BPU" firstAttribute="top" relation="lessThanOrEqual" secondItem="ghO-v8-UnU" secondAttribute="bottom" constant="8" id="5Lz-Qk-hsq"/>
+                            <constraint firstAttribute="trailing" secondItem="Tvf-2M-BPU" secondAttribute="trailing" id="AG5-Ed-cLL"/>
+                            <constraint firstItem="Tvf-2M-BPU" firstAttribute="top" secondItem="ghO-v8-UnU" secondAttribute="bottom" constant="8" symbolic="YES" id="CAV-aG-Scd"/>
+                            <constraint firstItem="Tvf-2M-BPU" firstAttribute="leading" secondItem="ayS-Vj-Dg3" secondAttribute="leading" id="NLw-kv-5gP"/>
+                            <constraint firstItem="ghO-v8-UnU" firstAttribute="top" secondItem="aS5-nA-cXA" secondAttribute="bottom" constant="57" id="NV0-wO-8jh"/>
+                            <constraint firstItem="Tvf-2M-BPU" firstAttribute="bottom" secondItem="2RM-gy-OC7" secondAttribute="top" id="Np8-OY-36Z"/>
+                            <constraint firstItem="ghO-v8-UnU" firstAttribute="leading" secondItem="ayS-Vj-Dg3" secondAttribute="leading" constant="292" id="fFM-fV-frJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TweetsTblView" destination="Tvf-2M-BPU" id="GKy-BZ-R8i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtL-9V-X9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
