@@ -52,8 +52,8 @@ class TwitterClient: BDBOAuth1SessionManager {
                     print("It worked!!!")
                     //testing serialization
                     var my_user = User(dictionary: response as! NSDictionary)
-                    //print("Testing user name")
-                    //print(user.name)
+                    //setCurrentUser globally
+                    User.currentUser = my_user
                     self.loginCompletion?(user: my_user, error:nil)
                 
                     }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
