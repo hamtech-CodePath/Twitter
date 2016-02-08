@@ -43,6 +43,8 @@ class TweetCell: UITableViewCell {
         // Initialization code
         avatarImageView.layer.cornerRadius = 10
         avatarImageView.clipsToBounds = true
+        didFavorite = false
+        didRetweet = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
