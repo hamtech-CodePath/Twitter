@@ -13,6 +13,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweets: [Tweet]?
     
     @IBOutlet weak var TweetsTblView: UITableView!
+    var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //setup delegates for tableview
         self.TweetsTblView.delegate = self
         self.TweetsTblView.dataSource = self
+        
+        //setup refresh to reload
+        refresh = UIRefreshControl()
+        refresh.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.TweetsTblView.insertSubview(refresh, atIndex: 0)
         
         TwitterClient.sharedInstance.homeTimelineWithCompletion(
             nil, completion: { (tweets, error) -> () in
@@ -63,11 +69,37 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell!
     }
     
+    //UIRefreshControl Methods
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
+    func onRefresh() {
+        //Delete list completely (BAD PRACTICE) but works
+        //if(onRequestView)? self.requestList = [] : self.offerList = []
+        
+        //Place API call for new post here then in that callback place <self.endRefreshing>
+        TwitterClient.sharedInstance.homeTimelineWithCompletion(
+            nil, completion: { (tweets, error) -> () in
+                if(error == nil) {
+                    self.tweets = tweets
+                    self.TweetsTblView.reloadData()
+                }
+        })
+        
+        delay(2, closure: {
+            self.refresh.endRefreshing()
+        })
+    }
+    
+    
     @IBAction func onLogout(sender: AnyObject) {
             User.currentUser?.logout()
-    }
-    @IBAction func onRetweetTap(sender: AnyObject) {
-        print("retweet")
     }
 
 }
