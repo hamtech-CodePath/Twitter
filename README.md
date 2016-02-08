@@ -1,8 +1,8 @@
 # Project 4 - *Twit*
 
-**Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+Twit is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: 10  hours spent in total
 
 ## User Stories
 
@@ -18,7 +18,7 @@ The following **optional** features are implemented:
 
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [X] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [ ] User can pull to refresh.
+- [X] User can pull to refresh.
 
 The following **additional** features are implemented:
 
@@ -33,8 +33,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+![alt tag](https://raw.githubusercontent.com/hamtech-CodePath/Twitter/master/TwitterClient.gif)
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
@@ -43,7 +42,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Hugh A. Miles II]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
