@@ -71,11 +71,9 @@ class TwitterClient: BDBOAuth1SessionManager {
                 //getUserInfo
                 TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                     print("It worked!!!")
-                    //testing serialization
-                    var my_user = User(dictionary: response as! NSDictionary)
                     //setCurrentUser globally
-                    User.currentUser = my_user
-                    self.loginCompletion?(user: my_user, error:nil)
+                    User.currentUser = User.createUser(response as! NSDictionary)
+                    self.loginCompletion?(user: User.currentUser, error:nil)
                 
                     }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                         print("Could not get User")

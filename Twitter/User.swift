@@ -36,6 +36,13 @@ class User: NSObject {
         NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
     }
     
+    // User factory
+    // TODO: error handling if values not present
+    static func createUser(dictionary: NSDictionary) -> User {
+        let newUser = User(dictionary: dictionary)
+        return newUser
+    }
+    
     class var currentUser: User? {
         get{
             if _currentUser == nil {
