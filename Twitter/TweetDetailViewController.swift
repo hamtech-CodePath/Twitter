@@ -12,10 +12,23 @@ class TweetDetailViewController: UIViewController {
 
     var tweet: Tweet?
     
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var userFullNameLabel: UILabel!
+    @IBOutlet weak var userScreenNameLabel: UILabel!
+    @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        if let tweet = tweet {
+            avatarImageView.setImageWithURL(NSURL(string: (tweet.user?.profileImageUrl)!)!)
+            userFullNameLabel.text = tweet.user?.name
+            let screenname = tweet.user?.name as String!
+            userScreenNameLabel.text = "@\(screenname)"
+            tweetLabel.text = tweet.text
+            createdAtLabel.text = tweet.createdAtString
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +36,15 @@ class TweetDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func replyBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func retweetBtn(sender: AnyObject) {
+    }
+ 
+    @IBAction func likeBtn(sender: AnyObject) {
+    }
+    
     /*
     // MARK: - Navigation
 
