@@ -101,5 +101,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func onLogout(sender: AnyObject) {
             User.currentUser?.logout()
     }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let cell = sender as! TweetCell //cast sender >> UICollectionCell
+        let index = TweetsTblView.indexPathForCell(cell) //GetIndex that was selected
+        let selectedTweet = tweets![index!.row] // getMovie from dictionary
+        
+        let detail = segue.destinationViewController as! TweetDetailViewController
+        detail.tweet = selectedTweet
+        
+        
+    }
 
 }

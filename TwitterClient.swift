@@ -49,7 +49,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         loginCompletion = completion
         //Fetch RequestToken and redirect to authorization page
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "cptwitterdemo://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
+        fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "cptwitterdemo://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
             print("Got the request token")
             var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
             UIApplication.sharedApplication().openURL(authURL!)
@@ -62,7 +62,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     //TwitterClient.openURL(url: url)
     func openURL(url:NSURL){
-        TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
+        fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
                 print("Got access token")
             
                 //Save access token
@@ -72,8 +72,8 @@ class TwitterClient: BDBOAuth1SessionManager {
                 TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                     print("It worked!!!")
                     //setCurrentUser globally
-                    User.currentUser = User.createUser(response as! NSDictionary)
-                    self.loginCompletion?(user: User.currentUser, error:nil)
+                    var user = User.createUser(response as! NSDictionary)
+                    self.loginCompletion?(user: user, error:nil)
                 
                     }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                         print("Could not get User")
