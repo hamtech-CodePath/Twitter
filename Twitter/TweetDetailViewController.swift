@@ -37,6 +37,7 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func replyBtn(sender: AnyObject) {
+        self.performSegueWithIdentifier("detailToCompose", sender: nil)
     }
     
     @IBAction func retweetBtn(sender: AnyObject) {
@@ -44,8 +45,7 @@ class TweetDetailViewController: UIViewController {
  
     @IBAction func likeBtn(sender: AnyObject) {
     }
-    
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -53,6 +53,5 @@ class TweetDetailViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

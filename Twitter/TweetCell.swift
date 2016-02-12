@@ -17,8 +17,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var TweetLabel: UILabel!
     @IBOutlet weak var favoriteCountLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
-    @IBOutlet weak var favoriteImageView: UIImageView!
-    @IBOutlet weak var retweetImageView: UIImageView!
+    @IBOutlet weak var retweetBtn: UIButton!
+    @IBOutlet weak var likeBtn: UIButton!
     
     var didFavorite: Bool?
     var didRetweet: Bool?
@@ -56,13 +56,15 @@ class TweetCell: UITableViewCell {
         print("retweet")
         if didFavorite == true {
             didFavorite = false
-            self.retweetImageView.image = UIImage(named:"retweet-action")
+            let btn = sender as! UIButton
+            btn.setImage(UIImage(named: "retweet-action"), forState: .Normal)
             self.tweet.retweetCount!--
             retweetCountLabel.text = String(tweet.retweetCount!)
 
         } else {
            didFavorite = true
-            self.retweetImageView.image = UIImage(named:"retweet-action-on-pressed")
+            let btn = sender as! UIButton
+            btn.setImage(UIImage(named: "retweet-action-on-pressed"), forState: .Normal)
             self.tweet.retweetCount!++
             retweetCountLabel.text = String(tweet.retweetCount!)
         }
@@ -70,15 +72,16 @@ class TweetCell: UITableViewCell {
 
     @IBAction func pressedFavorite(sender: AnyObject) {
         print("favorite")
+        let btn = sender as! UIButton
         if didFavorite == true {
             didFavorite = false
-            self.favoriteImageView.image = UIImage(named:"like-action")
+            btn.setImage(UIImage(named: "like-action"), forState: .Normal)
             self.tweet.favoriteCount!--
             favoriteCountLabel.text = String(tweet.favoriteCount!)
             
         } else {
             didFavorite = true
-            self.favoriteImageView.image = UIImage(named:"like-action-on-pressed")
+            btn.setImage(UIImage(named: "like-action-on-pressed"), forState: .Normal)
             self.tweet.favoriteCount!++
             favoriteCountLabel.text = String(tweet.favoriteCount!)
         }

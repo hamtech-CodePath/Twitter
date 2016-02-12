@@ -38,14 +38,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        TwitterClient.sharedInstance.homeTimelineWithCompletion(
-            nil, completion: { (tweets, error) -> () in
-                if(error == nil) {
-                    self.tweets = tweets
-                    self.TweetsTblView.reloadData()
-                }
-        })
     }
     
 
@@ -107,14 +99,25 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let cell = sender as! TweetCell //cast sender >> UICollectionCell
-        let index = TweetsTblView.indexPathForCell(cell) //GetIndex that was selected
-        let selectedTweet = tweets![index!.row] // getMovie from dictionary
+        if let sender = sender as? UIButton {
         
-        let detail = segue.destinationViewController as! TweetDetailViewController
-        detail.tweet = selectedTweet
+        } else {
+            let cell = sender as! TweetCell //cast sender >> UICollectionCell
+            let index = self.TweetsTblView.indexPathForCell(cell) //GetIndex that was selected
+            let selectedTweet = self.tweets![index!.row] // getMovie from dictionary
+            
+            let detail = segue.destinationViewController as! TweetDetailViewController
+            detail.tweet = selectedTweet
+            
+        }
         
         
+        
+
     }
 
+    @IBAction func createTweet(sender: AnyObject) {
+        self.performSegueWithIdentifier("tweetsToCompose", sender: sender)
+    }
+    
 }
