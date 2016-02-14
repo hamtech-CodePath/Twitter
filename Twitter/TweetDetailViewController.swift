@@ -18,6 +18,9 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     
+    var didFavorite: Bool?
+    var didRetweet: Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -41,9 +44,35 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func retweetBtn(sender: AnyObject) {
+        print("retweet")
+        if didFavorite == true {
+            didFavorite = false
+            let btn = sender as! UIButton
+            btn.setImage(UIImage(named: "retweet-action"), forState: .Normal)
+            self.tweet!.retweetCount!--
+            
+        } else {
+            didFavorite = true
+            let btn = sender as! UIButton
+            btn.setImage(UIImage(named: "retweet-action-on-pressed"), forState: .Normal)
+            self.tweet!.retweetCount!++
+        }
     }
  
     @IBAction func likeBtn(sender: AnyObject) {
+        print("favorite")
+        let btn = sender as! UIButton
+        if didFavorite == true {
+            didFavorite = false
+            btn.setImage(UIImage(named: "like-action"), forState: .Normal)
+            self.tweet!.favoriteCount!--
+            
+        } else {
+            didFavorite = true
+            btn.setImage(UIImage(named: "like-action-on-pressed"), forState: .Normal)
+            self.tweet!.favoriteCount!++
+
+        }
     }
 
     // MARK: - Navigation
