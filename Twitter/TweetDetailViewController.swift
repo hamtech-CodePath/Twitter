@@ -40,7 +40,7 @@ class TweetDetailViewController: UIViewController {
     }
     
     @IBAction func replyBtn(sender: AnyObject) {
-        self.performSegueWithIdentifier("detailToCompose", sender: nil)
+        //self.performSegueWithIdentifier("detailToCompose", sender: nil)
     }
     
     @IBAction func retweetBtn(sender: AnyObject) {

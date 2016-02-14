@@ -75,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="88x-Fs-Z8N" id="YPM-KE-CsU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="178.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivH-Z9-6RF" userLabel="Pressed Retweet">
@@ -103,8 +103,8 @@
                                                         <constraint firstAttribute="height" constant="50" id="ipl-cv-HCL"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply-action_0" translatesAutoresizingMaskIntoConstraints="NO" id="WjU-A1-fYx">
-                                                    <rect key="frame" x="8" y="141" width="23" height="27"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reply-action_0" translatesAutoresizingMaskIntoConstraints="NO" id="WjU-A1-fYx">
+                                                    <rect key="frame" x="8" y="140" width="23" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="8cN-zq-rph"/>
                                                         <constraint firstAttribute="width" constant="23" id="uqc-OT-SZC"/>
@@ -124,14 +124,14 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="763" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqx-3F-iVB">
-                                                    <rect key="frame" x="106" y="146" width="24" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="763" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqx-3F-iVB">
+                                                    <rect key="frame" x="106" y="145" width="24" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="340" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul1-1q-5Ih">
-                                                    <rect key="frame" x="195" y="146" width="25" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="340" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul1-1q-5Ih">
+                                                    <rect key="frame" x="194" y="145" width="25" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -151,8 +151,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRS-02-XSh">
-                                                    <rect key="frame" x="71" y="142" width="27" height="26"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRS-02-XSh">
+                                                    <rect key="frame" x="71" y="141" width="27" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="Oqp-uW-MGe"/>
                                                         <constraint firstAttribute="width" constant="27" id="nrL-Di-HJE"/>
@@ -162,8 +162,8 @@
                                                         <action selector="pressedRetweet:" destination="88x-Fs-Z8N" eventType="touchUpInside" id="XLy-hj-c4t"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rX-Bn-kPl">
-                                                    <rect key="frame" x="166" y="142" width="20" height="26"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rX-Bn-kPl">
+                                                    <rect key="frame" x="165" y="141" width="20" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="0W1-AW-Nol"/>
                                                         <constraint firstAttribute="width" constant="20" id="YPo-C3-0sX"/>
@@ -217,12 +217,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yf-eC-D2Y">
-                                <rect key="frame" x="347" y="686" width="46" height="30"/>
+                                <rect key="frame" x="349" y="637" width="42" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WzZ-qK-BAZ"/>
                                     <constraint firstAttribute="width" constant="46" id="dGe-6f-XNT"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Tweet">
+                                    <color key="titleColor" red="0.2784313725" green="0.60784313729999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="createTweet:" destination="xls-l2-knb" eventType="touchUpInside" id="RIv-6B-8KP"/>
                                 </connections>
@@ -636,7 +638,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZpR-35-fjS" id="Ndr-4l-GuH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="174.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ryan Greenberg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJp-2s-dr3">

@@ -17,8 +17,14 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        print(User.currentUser)
+        if _currentUser != nil {
+            tweetInputTextField.text = ""
+            currentUserFullNameLabel.text = User.currentUser?.name
+            currentUserScreenNameLabel.text = User.currentUser?.screenname
+            currentUserImageView.setImageWithURL(NSURL(string: (User.currentUser?.profileImageUrl)!)!)
+        }
     }
 
     override func didReceiveMemoryWarning() {

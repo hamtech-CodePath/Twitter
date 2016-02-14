@@ -22,7 +22,6 @@ class User: NSObject {
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary //save whole JSON Dictionary
-        
         //assign serialized data to object variables
         name = dictionary["name"] as? String
         screenname = dictionary["screenname"] as? String
